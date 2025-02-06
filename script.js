@@ -1,4 +1,4 @@
-const questions = ["¿Estás libre el 14 de febrero?", "¿Te gusta la bocata?", "¿Quieres ser mi San Valentín?"]
+const questions = ["¿Estás libre el 14 de febrero?", "¿Te gusta 'La Bocata'?", "¿Quieres ser mi San Valentín?"]
 
 let currentQuestion = 0
 
