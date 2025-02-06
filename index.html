@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjetas de San Valentín</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="background-effects"></div>
+    <div class="container">
+        <div id="card" class="card">
+            <h2 id="question"></h2>
+            <div id="options" class="options">
+                <button id="yesBtn">Sí</button>
+                <button id="noBtn">No</button>
+            </div>
+            <p id="message" class="message"></p>
+            <button id="retryBtn" class="retry-btn" style="display: none;">Intentar de nuevo</button>
+        </div>
+        <div id="invitation" class="invitation" style="display: none;">
+            <div class="invitation-content">
+                <h2>Estás invitada a ser mi San Valentín</h2>
+                <p class="date">14 de febrero</p>
+                <p class="time">6:00 de la tarde</p>
+                <p class="love-message">Con todo mi amor,</p>
+                <p class="signature">Tu novio</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+

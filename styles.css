@@ -1,0 +1,164 @@
+body {
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #ffe6e6;
+    overflow: hidden;
+  }
+  
+  #background-effects {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  .heart {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.7;
+    animation: float 5s infinite ease-in-out;
+  }
+  
+  .heart-pink {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23FFB6C1"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>');
+  }
+  
+  .heart-purple {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23D8BFD8"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>');
+  }
+  
+  .heart-gray {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23A9A9A9"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>');
+  }
+  
+  .heart-red {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23FFB3BA"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>');
+  }
+  
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-20px) rotate(10deg);
+    }
+  }
+  
+  .container {
+    text-align: center;
+    z-index: 1;
+  }
+  
+  .card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+  }
+  
+  .options {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #ff1493;
+  }
+  
+  .message {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #ff1493;
+  }
+  
+  .retry-btn {
+    margin-top: 20px;
+    background-color: #4caf50;
+  }
+  
+  .retry-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .invitation {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 350px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .invitation::before {
+    content: "";
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    right: -50px;
+    bottom: -50px;
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4, #ffecd2);
+    z-index: -1;
+    filter: blur(30px);
+    opacity: 0.7;
+  }
+  
+  .invitation-content {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .invitation h2 {
+    font-family: "Dancing Script", cursive;
+    font-size: 32px;
+    color: #ff1493;
+    margin-bottom: 20px;
+  }
+  
+  .invitation .date,
+  .invitation .time {
+    font-size: 18px;
+    color: #333;
+    margin: 10px 0;
+  }
+  
+  .invitation .love-message {
+    font-style: italic;
+    color: #666;
+    margin-top: 30px;
+  }
+  
+  .invitation .signature {
+    font-family: "Dancing Script", cursive;
+    font-size: 24px;
+    color: #ff1493;
+    margin-top: 10px;
+  }
+  
+  
