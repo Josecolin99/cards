@@ -250,6 +250,7 @@
 
   let noCount = 0;
   let hasReset = false;
+  let resetCount = 0;
   let usedOtherOption = false; // si usó maybe, think o no antes de decir sí
 
   const noMessages = [
@@ -311,10 +312,11 @@
       title.textContent = '¡Al fin dijiste que sí!';
       text.innerHTML = `¿Por qué dudaste ${dudas} ${dudas === 1 ? 'vez' : 'veces'}? ¿Ya tenías planes con el otro?! 😒<br><br>Pero bueno... ganando como siempre, porque soy güerito, ojos de color 😎✨<br><br>Te amo, princesa mía 💕🌹`;
     } else {
-      // Ha reiniciado pero fue directo al sí esta vez
-      emoji.textContent = '🥰';
-      title.textContent = '¡Sabía que volverías por mí!';
-      text.innerHTML = 'Necesitaste un reinicio para darte cuenta, pero al final el corazón sabe lo que quiere 💖<br><br>Como siempre... ganando, porque soy güerito, ojos de color 😎✨<br><br>Te amo, princesa mía 💕';
+      // Ha reiniciado
+      let resets = resetCount;
+      emoji.textContent = '😤💕';
+      title.textContent = '¿Neta, princesa?';
+      text.innerHTML = `¿Por qué tuviste que darle a "intentar de nuevo" ${resets} ${resets === 1 ? 'vez' : 'veces'}? ¿Ya tenías planes con el OTRO?! 😒<br><br>Pero bueno... ganando como siempre, porque soy güerito, ojos de color 😎✨<br><br>Te amo, princesa mía 💕🌹`;
     }
   }
 
@@ -325,6 +327,7 @@
 
   function reset() {
     hasReset = true;
+    resetCount++;
     noCount = 0;
     usedOtherOption = false;
     document.getElementById('question').style.display = 'block';
