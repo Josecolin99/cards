@@ -1,36 +1,358 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>to: Karla Naomi Fernández Coraza</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>San Valentín 💕</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1a0011, #2d0a1f, #1a0011);
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+  }
+
+  .heart-bg {
+    position: fixed;
+    font-size: 20px;
+    animation: float linear infinite;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.15; }
+    90% { opacity: 0.15; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+  }
+
+  .card {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,100,150,0.2);
+    border-radius: 24px;
+    padding: 50px 40px;
+    text-align: center;
+    max-width: 500px;
+    width: 92%;
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 20px 60px rgba(200,0,80,0.2);
+    transition: transform 0.3s;
+  }
+
+  .big-heart {
+    font-size: 80px;
+    animation: pulse 1.2s ease-in-out infinite;
+    display: inline-block;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+  }
+
+  .name-tag {
+    color: #ffd700;
+    font-size: 20px;
+    font-style: italic;
+    margin-top: 15px;
+    text-shadow: 0 0 20px rgba(255,215,0,0.4);
+    letter-spacing: 1px;
+  }
+
+  h1 {
+    color: #ff6b9d;
+    font-size: 28px;
+    margin: 12px 0 10px;
+    text-shadow: 0 0 30px rgba(255,107,157,0.5);
+  }
+
+  .subtitle {
+    color: rgba(255,255,255,0.6);
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .btn {
+    padding: 14px 24px;
+    border: none;
+    border-radius: 50px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-yes {
+    background: linear-gradient(135deg, #ff6b9d, #e84393);
+    color: white;
+    box-shadow: 0 4px 25px rgba(232,67,147,0.4);
+  }
+  .btn-yes:hover { transform: scale(1.08); box-shadow: 0 6px 35px rgba(232,67,147,0.6); }
+
+  .btn-maybe {
+    background: linear-gradient(135deg, #a855f7, #7c3aed);
+    color: white;
+    box-shadow: 0 4px 20px rgba(168,85,247,0.3);
+  }
+  .btn-maybe:hover { transform: scale(1.05); }
+
+  .btn-think {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: white;
+    box-shadow: 0 4px 20px rgba(245,158,11,0.3);
+  }
+  .btn-think:hover { transform: scale(1.05); }
+
+  .btn-no {
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.5);
+    border: 1px solid rgba(255,255,255,0.1);
+    font-size: 14px;
+    transition: all 0.2s;
+  }
+
+  .result {
+    display: none;
+    animation: fadeIn 0.6s ease;
+  }
+
+  .result h2 {
+    color: #ff6b9d;
+    font-size: 24px;
+    margin: 15px 0;
+  }
+
+  .result p {
+    color: rgba(255,255,255,0.75);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .result-emoji {
+    font-size: 70px;
+    display: inline-block;
+  }
+
+  .btn-reset {
+    margin-top: 25px;
+    padding: 10px 30px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,100,150,0.3);
+    color: #ff6b9d;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+  }
+  .btn-reset:hover { background: rgba(255,100,150,0.15); }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .confetti-piece {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    animation: confettiFall 3s ease-out forwards;
+    z-index: 100;
+    pointer-events: none;
+  }
+
+  @keyframes confettiFall {
+    0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+  }
+
+  .nope-count { color: rgba(255,255,255,0.4); font-size: 12px; margin-top: 6px; }
+</style>
 </head>
 <body>
-    <div id="background-effects"></div>
-    <div class="container">
-        <div id="card" class="card">
-            <h2 id="question"></h2>
-            <div id="options" class="options">
-                <button id="yesBtn">Sí</button>
-                <button id="noBtn">No</button>
-            </div>
-            <p id="message" class="message"></p>
-            <button id="retryBtn" class="retry-btn" style="display: none;">Intentar de nuevo</button>
-        </div>
-        <div id="invitation" class="invitation" style="display: none;">
-            <div class="invitation-content">
-                <h2>Estás invitada a ser mi San Valentín</h2>
-                <p class="date">14 de febrero</p>
-                <p class="time">6:00 de la tarde</p>
-                <p class="love-message">Con todo mi cariño:</p>
-                <p class="signature">J.A.C.N.</p>
-                <p class="signature">Tu novio.</p>
-            </div>
-        </div>
+
+<div class="card" id="card">
+  <div id="question">
+    <div class="big-heart">💖</div>
+    <p class="name-tag">~ Princesa mía ~</p>
+    <h1>¿Quieres ser mi San Valentín?</h1>
+    <p class="subtitle">Elige sabiamente... o no 😏</p>
+    <div class="buttons">
+      <button class="btn btn-yes" onclick="answer('yes')">¡Sííí! 💕</button>
+      <button class="btn btn-maybe" onclick="answer('maybe')">Tal vez... 👀</button>
+      <button class="btn btn-think" onclick="answer('think')">Déjame pensarlo 🤔</button>
+      <button class="btn btn-no" id="btnNo" onclick="answer('no')">No 😅</button>
+      <div class="nope-count" id="nopeCount"></div>
     </div>
-    <script src="script.js"></script>
+  </div>
+
+  <div class="result" id="resultYes">
+    <div class="result-emoji" id="yesEmoji">🥰</div>
+    <h2 id="yesTitle"></h2>
+    <p id="yesText"></p>
+    <button class="btn-reset" onclick="reset()">Volver a empezar</button>
+  </div>
+
+  <div class="result" id="resultMaybe">
+    <div class="result-emoji">😏</div>
+    <h2>Ay sí, como las otras 20 veces...</h2>
+    <p>Ya dale a "Volver a empezar" y di que sí 🙄💕</p>
+    <button class="btn-reset" onclick="reset()">Volver a empezar</button>
+  </div>
+
+  <div class="result" id="resultThink">
+    <div class="result-emoji">⏳</div>
+    <h2>Espera... Espera... Ah ah</h2>
+    <p>¿Qué te hice? ¿Qué te debo? 😭</p>
+    <button class="btn-reset" onclick="reset()">Volver a empezar</button>
+  </div>
+
+  <div class="result" id="resultNoFinal">
+    <div class="result-emoji">💔</div>
+    <h2>Esta noche dormiré solo...</h2>
+    <p>Bueno no, está Chiwis 🐶💔</p>
+    <button class="btn-reset" onclick="reset()">Volver a empezar</button>
+  </div>
+</div>
+
+<script>
+  // Floating hearts
+  function createHearts() {
+    const emojis = ['💕','💖','💗','💝','❤️','💘','🌹'];
+    for (let i = 0; i < 20; i++) {
+      const h = document.createElement('div');
+      h.className = 'heart-bg';
+      h.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      h.style.left = Math.random() * 100 + 'vw';
+      h.style.animationDuration = (6 + Math.random() * 8) + 's';
+      h.style.animationDelay = (Math.random() * 10) + 's';
+      h.style.fontSize = (14 + Math.random() * 20) + 'px';
+      document.body.appendChild(h);
+    }
+  }
+  createHearts();
+
+  let noCount = 0;
+  let hasReset = false;
+  let usedOtherOption = false; // si usó maybe, think o no antes de decir sí
+
+  const noMessages = [
+    "¿Seguro/a? 🥺",
+    "Piénsalo otra vez...",
+    "¿En serio? 😢",
+    "Dale, di que sí...",
+    "Última oportunidad..."
+  ];
+
+  function answer(type) {
+    if (type === 'no') {
+      usedOtherOption = true;
+      noCount++;
+      const btn = document.getElementById('btnNo');
+      const counter = document.getElementById('nopeCount');
+
+      if (noCount < 5) {
+        btn.textContent = noMessages[noCount - 1];
+        counter.textContent = `Has dicho que no ${noCount} vez/veces... 💔`;
+        btn.style.fontSize = Math.max(14 - noCount, 10) + 'px';
+        const yesBtn = document.querySelector('.btn-yes');
+        yesBtn.style.transform = `scale(${1 + noCount * 0.1})`;
+        return;
+      }
+      showResult('resultNoFinal');
+      return;
+    }
+
+    if (type === 'maybe' || type === 'think') {
+      usedOtherOption = true;
+    }
+
+    if (type === 'yes') {
+      launchConfetti();
+      buildYesMessage();
+      showResult('resultYes');
+    } else if (type === 'maybe') {
+      showResult('resultMaybe');
+    } else if (type === 'think') {
+      showResult('resultThink');
+    }
+  }
+
+  function buildYesMessage() {
+    const title = document.getElementById('yesTitle');
+    const text = document.getElementById('yesText');
+    const emoji = document.getElementById('yesEmoji');
+
+    if (!hasReset && !usedOtherOption && noCount === 0) {
+      // Primera vez, directo al sí, sin haber usado ninguna otra opción ni reiniciado
+      emoji.textContent = '🥰';
+      title.textContent = '¡A la primera!';
+      text.innerHTML = 'Se me acabó la originalidad pensando en las otras respuestas... 😅<br><br>Te amo ❤️<br><br>Paso por ti a las 6. 🌹';
+    } else if (usedOtherOption || noCount > 0) {
+      // Usó otra opción o dijo no antes de decir sí
+      let dudas = noCount + (usedOtherOption ? 1 : 0);
+      emoji.textContent = '😤💕';
+      title.textContent = '¡Al fin dijiste que sí!';
+      text.innerHTML = `¿Por qué dudaste ${dudas} ${dudas === 1 ? 'vez' : 'veces'}? ¿Ya tenías planes con el otro?! 😒<br><br>Pero bueno... ganando como siempre, porque soy güerito, ojos de color 😎✨<br><br>Te amo, princesa mía 💕🌹`;
+    } else {
+      // Ha reiniciado pero fue directo al sí esta vez
+      emoji.textContent = '🥰';
+      title.textContent = '¡Sabía que volverías por mí!';
+      text.innerHTML = 'Necesitaste un reinicio para darte cuenta, pero al final el corazón sabe lo que quiere 💖<br><br>Como siempre... ganando, porque soy güerito, ojos de color 😎✨<br><br>Te amo, princesa mía 💕';
+    }
+  }
+
+  function showResult(id) {
+    document.getElementById('question').style.display = 'none';
+    document.getElementById(id).style.display = 'block';
+  }
+
+  function reset() {
+    hasReset = true;
+    noCount = 0;
+    usedOtherOption = false;
+    document.getElementById('question').style.display = 'block';
+    document.querySelectorAll('.result').forEach(r => r.style.display = 'none');
+    const btn = document.getElementById('btnNo');
+    btn.textContent = 'No 😅';
+    btn.style.fontSize = '14px';
+    document.getElementById('nopeCount').textContent = '';
+    document.querySelector('.btn-yes').style.transform = 'scale(1)';
+    document.querySelectorAll('.confetti-piece').forEach(c => c.remove());
+  }
+
+  function launchConfetti() {
+    const colors = ['#ff6b9d','#e84393','#a855f7','#f59e0b','#ff4757','#ff6348','#ffa502'];
+    for (let i = 0; i < 80; i++) {
+      const c = document.createElement('div');
+      c.className = 'confetti-piece';
+      c.style.left = Math.random() * 100 + 'vw';
+      c.style.top = '-10px';
+      c.style.background = colors[Math.floor(Math.random() * colors.length)];
+      c.style.animationDelay = Math.random() * 2 + 's';
+      c.style.animationDuration = (2 + Math.random() * 2) + 's';
+      c.style.width = (6 + Math.random() * 8) + 'px';
+      c.style.height = (6 + Math.random() * 8) + 'px';
+      c.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+      document.body.appendChild(c);
+    }
+  }
+</script>
 </body>
 </html>
-
